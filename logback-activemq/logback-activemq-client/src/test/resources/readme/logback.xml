@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<target>System.out</target>
+		<encoder charset="utf-8">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="MQ" class="com.ynshun.log.ActiveMQAppender">
+		<service_id>MyTestLogCollect</service_id>
+		<broken_url>tcp://192.168.72.129:61616</broken_url>
+		<disname>sms.queue.message</disname>
+		<!-- <username></username> -->
+		<!-- <password></password> -->
+	</appender>
+
+	<root level="info">
+		<appender-ref ref="MQ" />
+	</root>
+
+</configuration>
